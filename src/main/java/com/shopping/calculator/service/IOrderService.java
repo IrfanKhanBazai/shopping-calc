@@ -6,6 +6,6 @@ import com.shopping.calculator.model.Order;
 import java.util.List;
 
 public interface IOrderService {
-	
-	Order createOrder(List<String> items) throws UnIdentifiedItemException;
+
+    Order createOrder(List<String> items) throws UnIdentifiedItemException;
 }
