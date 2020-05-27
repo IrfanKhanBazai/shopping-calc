@@ -1,6 +1,5 @@
 package com.shopping.calculator.service;
 
-import com.shopping.calculator.discountengine.Discounts;
 import com.shopping.calculator.model.LineItem;
 import com.shopping.calculator.model.Order;
 import com.shopping.calculator.model.PricingInfo;
@@ -8,11 +7,10 @@ import com.shopping.calculator.repository.IDiscountRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.List;
 
 public class PricingService implements IPricingService {
 
-    private IDiscountRepository discountRepository;
+    private final IDiscountRepository discountRepository;
 
     public PricingService(IDiscountRepository discountRepository) {
         this.discountRepository = discountRepository;
@@ -54,11 +52,11 @@ public class PricingService implements IPricingService {
 
 
     private BigDecimal calculateSubTotalBeforeDiscount(BigDecimal price, long quantity) {
-        return (price.multiply(new BigDecimal(quantity)));
+        return (price.multiply(BigDecimal.valueOf(quantity)));
     }
 
     private BigDecimal calculateSubTotalAfterDiscount(BigDecimal price, long quantity, BigDecimal discountAmount) {
-        return (price.multiply(new BigDecimal(quantity))).subtract(discountAmount);
+        return (price.multiply(BigDecimal.valueOf(quantity))).subtract(discountAmount);
     }
 
 

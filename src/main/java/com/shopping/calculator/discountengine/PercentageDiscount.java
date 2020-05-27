@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class PercentageDiscount extends Discounts {
 
-    private Product eligibleProduct;
+    private final Product eligibleProduct;
 
 
     public PercentageDiscount(String name,
@@ -40,7 +40,7 @@ public class PercentageDiscount extends Discounts {
     }
 
     private BigDecimal calculateDiscountAmount(BigDecimal price, long quantity) {
-        return discountRate.multiply(new BigDecimal(quantity)).multiply(price).setScale(2, RoundingMode.HALF_EVEN);
+        return discountRate.multiply(BigDecimal.valueOf(quantity)).multiply(price).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

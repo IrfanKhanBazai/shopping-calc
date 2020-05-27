@@ -20,9 +20,9 @@ public class DiscountRepository implements IDiscountRepository {
         Product soup = productRepository.findProductByName("SOUP").get();
         Product bread = productRepository.findProductByName("BREAD").get();
 
-        PercentageDiscount percDiscountApple = new PercentageDiscount("10% Apple Discount", "Apple 10% off :", new BigDecimal(0.10), LocalDate.now(), LocalDate.of(2020, 8, 30), apple);
-        PercentageDiscount percDiscountSoup = new PercentageDiscount("5% Soup Discount", "Soup 5% off :", new BigDecimal(0.05), LocalDate.now(), LocalDate.of(2020, 8, 30), soup);
-        PercentageDiscount percDiscountBread = new PercentageDiscount("15% Bread Discount", "Bread 15% off :", new BigDecimal(0.15), LocalDate.now(), LocalDate.of(2020, 8, 30), bread);
+        PercentageDiscount percDiscountApple = new PercentageDiscount("10% Apple Discount", "Apple 10% off:", BigDecimal.valueOf(0.10), LocalDate.now(), LocalDate.of(2020, 8, 30), apple);
+        PercentageDiscount percDiscountSoup = new PercentageDiscount("5% Soup Discount", "Soup 5% off:", BigDecimal.valueOf(0.05), LocalDate.now(), LocalDate.of(2020, 8, 30), soup);
+        PercentageDiscount percDiscountBread = new PercentageDiscount("15% Bread Discount", "Bread 15% off:", BigDecimal.valueOf(0.15), LocalDate.now(), LocalDate.of(2020, 8, 30), bread);
 
         discounts.add(percDiscountApple);
         discounts.add(percDiscountSoup);

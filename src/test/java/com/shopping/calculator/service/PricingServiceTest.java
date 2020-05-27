@@ -34,14 +34,14 @@ public class PricingServiceTest {
         IPricingService pricingService = new PricingService(discountRepository);
         Product product = new Product();
         product.setName("Apple");
-        product.setPrice(new BigDecimal(1));
+        product.setPrice(BigDecimal.valueOf(1));
         Order order = createOrderItem(product, 2);
         PricingInfo pricingInfo = pricingService.calculatePrice(order);
 
         // 10% discount on each Apple
-        assertEquals(new BigDecimal(2.00).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalPriceBeforeDiscount());
-        assertEquals(new BigDecimal(1.80).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalPriceAfterDiscount());
-        assertEquals(new BigDecimal(0.20).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalDiscount());
+        assertEquals(BigDecimal.valueOf(2.00).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalPriceBeforeDiscount());
+        assertEquals(BigDecimal.valueOf(1.80).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalPriceAfterDiscount());
+        assertEquals(BigDecimal.valueOf(0.20).setScale(2, RoundingMode.HALF_EVEN), pricingInfo.getTotalDiscount());
 
     }
 

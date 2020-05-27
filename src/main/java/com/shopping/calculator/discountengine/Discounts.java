@@ -41,14 +41,14 @@ public abstract class Discounts {
         StringBuilder discountDetails = new StringBuilder();
 
         if (discountPerItem.compareTo(BigDecimal.ONE) == -1) {
-            BigDecimal discountPerItemInPence = (discountPerItem.multiply(new BigDecimal(100))).setScale(0, RoundingMode.HALF_EVEN);
-            discountDetails.append("-");
+            BigDecimal discountPerItemInPence = (discountPerItem.multiply(BigDecimal.valueOf(100))).setScale(0, RoundingMode.HALF_EVEN);
+            discountDetails.append(" -");
             discountDetails.append(discountPerItemInPence);
-            discountDetails.append(" p");
+            discountDetails.append("p");
         } else {
-            discountDetails.append("-");
+            discountDetails.append(" -");
+            discountDetails.append("£");
             discountDetails.append(discountPerItem.setScale(2, RoundingMode.HALF_EVEN));
-            discountDetails.append(" £");
         }
         return this.description + discountDetails.toString();
     }

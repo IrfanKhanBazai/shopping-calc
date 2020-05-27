@@ -57,9 +57,9 @@ public class ShoppingCalculatorMain {
     }
 
     private static void printPricingDetails(PricingInfo pricingInfo) {
-        System.out.println("Price: GBP " + pricingInfo.getTotalPriceBeforeDiscount());
-        System.out.println("Discount: GBP " + pricingInfo.getTotalDiscount());
-        System.out.println("Total: GBP " + pricingInfo.getTotalPriceAfterDiscount());
+        System.out.println("Price: £" + pricingInfo.getTotalPriceBeforeDiscount());
+        System.out.println("Discount: £" + pricingInfo.getTotalDiscount());
+        System.out.println("Total: £" + pricingInfo.getTotalPriceAfterDiscount());
     }
 
     private static void printDiscountDetails(Order order) {

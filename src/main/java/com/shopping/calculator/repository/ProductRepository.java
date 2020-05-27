@@ -15,15 +15,15 @@ public class ProductRepository implements IProductRepository {
     public List<Product> initializeProductRepository() {
         Product apple = new Product();
         apple.setName("APPLE");
-        apple.setPrice(new BigDecimal(10));
+        apple.setPrice(BigDecimal.valueOf(10));
 
         Product soup = new Product();
         soup.setName("SOUP");
-        soup.setPrice(new BigDecimal(10));
+        soup.setPrice(BigDecimal.valueOf(10));
 
         Product bread = new Product();
         bread.setName("BREAD");
-        bread.setPrice(new BigDecimal(15));
+        bread.setPrice(BigDecimal.valueOf(15));
 
 
         products.add(apple);
