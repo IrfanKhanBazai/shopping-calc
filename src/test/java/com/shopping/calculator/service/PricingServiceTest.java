@@ -4,10 +4,10 @@ import com.shopping.calculator.model.LineItem;
 import com.shopping.calculator.model.Order;
 import com.shopping.calculator.model.PricingInfo;
 import com.shopping.calculator.model.Product;
+import com.shopping.calculator.repository.DiscountRepositoryImpl;
 import com.shopping.calculator.repository.DiscountRepository;
-import com.shopping.calculator.repository.IDiscountRepository;
-import com.shopping.calculator.repository.IProductRepository;
 import com.shopping.calculator.repository.ProductRepository;
+import com.shopping.calculator.repository.ProductRepositoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,8 +20,8 @@ import static org.junit.Assert.assertEquals;
 
 public class PricingServiceTest {
 
-    IProductRepository productRepository = new ProductRepository();
-    IDiscountRepository discountRepository = new DiscountRepository();
+    ProductRepository productRepository = new ProductRepositoryImpl();
+    DiscountRepository discountRepository = new DiscountRepositoryImpl();
 
     @Before
     public void initializeRepositories() {
@@ -31,7 +31,7 @@ public class PricingServiceTest {
 
     @Test
     public void testCalculateFinalPrice() {
-        IPricingService pricingService = new PricingService(discountRepository);
+        PricingService pricingService = new PricingServiceImpl(discountRepository);
         Product product = new Product();
         product.setName("Apple");
         product.setPrice(BigDecimal.valueOf(1));

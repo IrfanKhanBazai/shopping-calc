@@ -2,10 +2,10 @@ package com.shopping.calculator.service;
 
 import com.shopping.calculator.exceptions.UnIdentifiedItemException;
 import com.shopping.calculator.model.Order;
+import com.shopping.calculator.repository.DiscountRepositoryImpl;
 import com.shopping.calculator.repository.DiscountRepository;
-import com.shopping.calculator.repository.IDiscountRepository;
-import com.shopping.calculator.repository.IProductRepository;
 import com.shopping.calculator.repository.ProductRepository;
+import com.shopping.calculator.repository.ProductRepositoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,8 +15,8 @@ import static org.junit.Assert.assertEquals;
 
 public class OrderServiceTest {
 
-    IProductRepository productRepository = new ProductRepository();
-    IDiscountRepository discountRepository = new DiscountRepository();
+    ProductRepository productRepository = new ProductRepositoryImpl();
+    DiscountRepository discountRepository = new DiscountRepositoryImpl();
 
     @Before
     public void initializeRepositories() {
@@ -27,7 +27,7 @@ public class OrderServiceTest {
     @Test
     public void testCreateOrder() throws UnIdentifiedItemException {
 
-        IOrderService orderService = new OrderService(productRepository);
+        OrderService orderService = new OrderServiceImpl(productRepository);
 
         Order order = orderService.createOrder(Arrays.asList("Soup", "soup", "Apple", "Bread"));
 
@@ -43,7 +43,7 @@ public class OrderServiceTest {
     @Test(expected = UnIdentifiedItemException.class)
     public void testCreateOrderThrowsException() throws UnIdentifiedItemException {
 
-        IOrderService orderService = new OrderService(productRepository);
+        OrderService orderService = new OrderServiceImpl(productRepository);
         orderService.createOrder(Arrays.asList("IncorrectItemName", "Soup", "Apple", "Bread"));
 
     }

@@ -4,14 +4,14 @@ import com.shopping.calculator.exceptions.NoShoppingItemFoundException;
 import com.shopping.calculator.exceptions.UnIdentifiedItemException;
 import com.shopping.calculator.model.Order;
 import com.shopping.calculator.model.PricingInfo;
+import com.shopping.calculator.repository.DiscountRepositoryImpl;
 import com.shopping.calculator.repository.DiscountRepository;
-import com.shopping.calculator.repository.IDiscountRepository;
-import com.shopping.calculator.repository.IProductRepository;
 import com.shopping.calculator.repository.ProductRepository;
-import com.shopping.calculator.service.IOrderService;
-import com.shopping.calculator.service.IPricingService;
+import com.shopping.calculator.repository.ProductRepositoryImpl;
 import com.shopping.calculator.service.OrderService;
 import com.shopping.calculator.service.PricingService;
+import com.shopping.calculator.service.OrderServiceImpl;
+import com.shopping.calculator.service.PricingServiceImpl;
 
 import java.util.Arrays;
 
@@ -22,15 +22,15 @@ public class ShoppingCalculatorMain {
         try {
 
             //Initializing repositories- this will be not needed if proper persistence layer is used like Spring repositories.
-            IProductRepository productRepository = new ProductRepository();
-            IDiscountRepository discountRepository = new DiscountRepository();
+            ProductRepository productRepository = new ProductRepositoryImpl();
+            DiscountRepository discountRepository = new DiscountRepositoryImpl();
 
             productRepository.initializeProductRepository();
             discountRepository.initializeDiscountRepository(productRepository);
 
 
-            IOrderService orderService = new OrderService(productRepository);
-            IPricingService pricingService = new PricingService(discountRepository);
+            OrderService orderService = new OrderServiceImpl(productRepository);
+            PricingService pricingService = new PricingServiceImpl(discountRepository);
 
 
             if (args == null || args.length == 0) {
